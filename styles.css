@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.main{
+    display: flex;
+    min-height: 600px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    height: 75vh;
+}
+.calculator{
+    padding: 20px;
+    background-color: grey;
+    width: 400px;
+    height: 600px;
+    border-radius: 8px;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 18px;
+}
