@@ -28,11 +28,14 @@
     padding: 8px;
     overflow-wrap: break-word;
 }
+.buttons{
+    display: grid;
+}
 .footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute; /*this should probably be :relative*/
+    position: relative;
     bottom: 0;
     left: 0;
     padding: 10px;
