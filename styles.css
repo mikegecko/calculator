@@ -17,6 +17,17 @@
     height: 600px;
     border-radius: 8px;
 }
+.screen-last{
+    height: 20px;
+    background-color: rgb(214, 214, 214);
+}
+.screen-current{
+    background-color: rgb(167, 166, 166);
+    font-size: 32px;
+    text-align: right;
+    padding: 8px;
+    overflow-wrap: break-word;
+}
 .footer{
     display: flex;
     justify-content: center;
