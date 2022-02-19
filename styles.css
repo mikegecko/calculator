@@ -17,6 +17,14 @@
     height: 600px;
     border-radius: 8px;
 }
+button{
+    font-size: 24px;
+    width: 80px;
+    height: 80px;
+    justify-self: center;
+    text-align: center;
+    
+}
 .screen-last{
     height: 20px;
     background-color: rgb(214, 214, 214);
@@ -29,7 +37,17 @@
     overflow-wrap: break-word;
 }
 .buttons{
+    padding-top: 32px;
     display: grid;
+    grid-template-columns: repeat( 4 , 1fr);
+    gap: 8px;
+}
+.clear-buttons{
+    padding-top: 18px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    gap: 16px;
 }
 .footer{
     display: flex;
