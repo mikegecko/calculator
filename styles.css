@@ -49,6 +49,9 @@ button{
     flex: 1;
     gap: 16px;
 }
+.clear-buttons > button{
+    flex: 1;
+}
 .footer{
     display: flex;
     justify-content: center;
