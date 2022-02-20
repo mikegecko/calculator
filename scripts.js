@@ -45,9 +45,37 @@ function buttonHandler(e){
         case '0':
             currentDisplay.innerHTML += '0';
             break;
+        //Operation and decimal handling TODO[Highlight current operation / lockout decimal if already pressed]
+        case 'add':
+            currentDisplay.innerHTML += ' + ';
+            break;
+        case 'minus':
+            currentDisplay.innerHTML += ' - ';
+            break;
+        case 'multiply':
+            currentDisplay.innerHTML += ' * ';
+            break;
+        case 'divide':
+            currentDisplay.innerHTML += ' / ';
+            break;
+        case 'point':
+            currentDisplay.innerHTML += ' . ';
+            break;
+        //Delete & Clear
+        case 'clr':
+            currentDisplay.innerHTML += ' . ';
+            break;
+        case 'del':
+            currentDisplay.innerHTML = del();
+            break;
         default:
             console.log(`Handler error for ${e}`);
     }
+}
+function del(){
+    let dispArr = currentDisplay.innerHTML.split('')
+    dispArr.pop();
+    return dispArr.join('');
 }
 function add(a,b){
     return a+b;
