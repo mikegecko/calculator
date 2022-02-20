@@ -1,9 +1,48 @@
 const currentDisplay = document.querySelector('.screen-current');
 const lastDisplay = document.querySelector('.screen-last');
+const buttons = document.querySelectorAll('.btn');
 
+buttons.forEach(element => {
+    element.addEventListener('click', buttonHandler);
+});
 
-
-
+function buttonHandler(e){
+    //console.log(e);
+    switch(e.target.id){
+        case '9':
+            currentDisplay.innerHTML =+ '9';
+            break;
+        case '8':
+            currentDisplay.innerHTML =+ '8';
+            break;
+        case '7':
+            currentDisplay.innerHTML =+ '7';
+            break;
+        case '6':
+            currentDisplay.innerHTML =+ '6';
+            break;
+        case '5':
+            currentDisplay.innerHTML =+ '5';
+            break;
+        case '4':
+            currentDisplay.innerHTML =+ '4';
+            break;
+        case '3':
+            currentDisplay.innerHTML =+ '3';
+            break;
+        case '2':
+            currentDisplay.innerHTML =+ '2';
+            break;
+        case '1':
+            currentDisplay.innerHTML =+ '1';
+            break;
+        case '0':
+            currentDisplay.innerHTML =+ '0';
+            break;
+        default:
+            console.log(`Handler error for ${e}`);
+    }
+}
 function add(a,b){
     return a+b;
 }
