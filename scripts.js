@@ -1,8 +1,9 @@
-/*
+const currentDisplay = document.querySelector('.screen-current');
+const lastDisplay = document.querySelector('.screen-last');
 
 
 
-*/
+
 function add(a,b){
     return a+b;
 }
