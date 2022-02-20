@@ -2,10 +2,16 @@ const currentDisplay = document.querySelector('.screen-current');
 const lastDisplay = document.querySelector('.screen-last');
 const buttons = document.querySelectorAll('.btn');
 
+let firstArgument = 0;
+let secondArgument;
+let operator;
+let lastOperator;
+
 buttons.forEach(element => {
     element.addEventListener('click', buttonHandler);
 });
-/*Make a function that handles the leading 0 on the display by using a handler whenever the display is updated*/
+/*Make a function that handles the leading 0 on the display by using a handler whenever the display is updated
+    - maybe also make this function responsible for updating both displays?*/
 function buttonHandler(e){
     //console.log(e);
     switch(e.target.id){
