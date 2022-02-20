@@ -31,6 +31,7 @@ button{
 }
 .screen-current{
     background-color: rgb(167, 166, 166);
+    min-height: 53px;
     font-size: 32px;
     text-align: right;
     padding: 8px;
