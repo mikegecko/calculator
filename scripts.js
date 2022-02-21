@@ -93,8 +93,11 @@ function clearDisplay(){
     return('0');
 }
 function del(){
-    let dispArr = currentDisplay.innerHTML.split('')
+    let dispArr = currentDisplay.innerHTML.split('');
     dispArr.pop();
+    if(currentDisplay.innerHTML == '' || dispArr.length == 0){
+        return('0');
+    }
     return dispArr.join('');
 }
 function add(a,b){
