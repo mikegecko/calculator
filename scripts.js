@@ -63,7 +63,7 @@ function buttonHandler(e){
             break;
         //Delete & Clear
         case 'clr':
-            currentDisplay.innerHTML += ' . ';
+            currentDisplay.innerHTML = clearDisplay();
             break;
         case 'del':
             currentDisplay.innerHTML = del();
@@ -71,6 +71,9 @@ function buttonHandler(e){
         default:
             console.log(`Handler error for ${e}`);
     }
+}
+function clearDisplay(){
+    return('0');
 }
 function del(){
     let dispArr = currentDisplay.innerHTML.split('')
