@@ -47,22 +47,30 @@ function buttonHandler(e){
             break;
         //Operation and decimal handling TODO[Highlight current operation / lockout decimal if already pressed]
         case 'add':
+            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' + ';
             break;
         case 'minus':
+            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' - ';
             break;
         case 'multiply':
+            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' * ';
             break;
         case 'divide':
+            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' / ';
             break;
         case 'point':
             currentDisplay.innerHTML += ' . ';
             break;
+        case 'equal':
+            console.log(firstArgument);
+            break;
         //Delete & Clear
         case 'clr':
+            firstArgument = 0;
             currentDisplay.innerHTML = clearDisplay();
             break;
         case 'del':
