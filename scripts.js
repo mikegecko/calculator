@@ -12,7 +12,16 @@ buttons.forEach(element => {
 });
 /*Make a function that handles the leading 0 on the display by using a handler whenever the display is updated
     - maybe also make this function responsible for updating both displays?*/
+function displayUpdate(){
+    let s1 = currentDisplay.innerHTML;
+    if(s1.charAt(0) === '0'){
+        let s2 = s1.substring(1);
+        currentDisplay.innerHTML = s2;
+    }
+    return;
+}
 function buttonHandler(e){
+    displayUpdate();
     //console.log(e);
     switch(e.target.id){
         case '9':
