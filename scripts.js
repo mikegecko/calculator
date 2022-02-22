@@ -1,11 +1,13 @@
 const currentDisplay = document.querySelector('.screen-current');
 const lastDisplay = document.querySelector('.screen-last');
 const buttons = document.querySelectorAll('.btn');
+const regexOperators = /\+-\*\//i;
 
 let firstArgument = 0;
 let secondArgument;
 let operator;
 let lastOperator;
+
 
 buttons.forEach(element => {
     element.addEventListener('click', buttonHandler);
@@ -58,25 +60,25 @@ function buttonHandler(e){
         case 'add':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' + ';
-            operator = document.querySelector('#add');
+            operator = '+';
             operatorDisplay();
             break;
         case 'minus':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' - ';
-            operator = document.querySelector('#minus');
+            operator = '-';
             operatorDisplay();
             break;
         case 'multiply':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' * ';
-            operator = document.querySelector('#multiply');
+            operator = '*';
             operatorDisplay();
             break;
         case 'divide':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' / ';
-            operator = document.querySelector('#divide');
+            operator = '/';
             operatorDisplay();
             break;
         case 'point':
@@ -84,6 +86,8 @@ function buttonHandler(e){
             break;
         case 'equal':
             console.log(firstArgument);
+            secondArgument = parseInt(currentDisplay.innerHTML.slice(regexOperators));
+            console.log(secondArgument);
             operate(firstArgument,operator,secondArgument);
             break;
         //Delete & Clear
@@ -135,7 +139,7 @@ function divide(a,b){
 function operate(arg1, operator, arg2){
     switch(operator){
         case '+':
-            currentDisplay.innerHTML = add(arg1,arg2);
+            currentDisplay.innerHTML = add(arg1,arg2).toString();
             break;
         case '-':
             currentDisplay.innerHTML = subtract(arg1, arg2);
