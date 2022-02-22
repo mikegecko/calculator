@@ -58,18 +58,26 @@ function buttonHandler(e){
         case 'add':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' + ';
+            operator = document.querySelector('#add');
+            operatorDisplay();
             break;
         case 'minus':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' - ';
+            operator = document.querySelector('#minus');
+            operatorDisplay();
             break;
         case 'multiply':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' * ';
+            operator = document.querySelector('#multiply');
+            operatorDisplay();
             break;
         case 'divide':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' / ';
+            operator = document.querySelector('#divide');
+            operatorDisplay();
             break;
         case 'point':
             currentDisplay.innerHTML += ' . ';
@@ -91,6 +99,13 @@ function buttonHandler(e){
 }
 function clearDisplay(){
     return('0');
+}
+function operatorDisplay(){
+    buttons.forEach(element => {
+        element.style.backgroundColor = 'white';
+    });
+    operator.style.backgroundColor = 'rgb(167, 166, 166)';
+    
 }
 function del(){
     let dispArr = currentDisplay.innerHTML.split('');
