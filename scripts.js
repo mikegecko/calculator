@@ -5,6 +5,7 @@ const regexOperators = /\+-\*\//i;
 
 let firstArgument = 0;
 let secondArgument;
+let argumentArray = [];
 let operator;
 let lastOperator;
 
@@ -85,9 +86,13 @@ function buttonHandler(e){
             currentDisplay.innerHTML += ' . ';
             break;
         case 'equal':
+            argumentArray = currentDisplay.innerHTML.split(' ');
+            firstArgument = parseInt(argumentArray[0]);
+            //operator is argumentArray[1]
+            secondArgument = parseInt(argumentArray[2]);
             console.log(firstArgument);
-            secondArgument = parseInt(currentDisplay.innerHTML.slice(regexOperators));
             console.log(secondArgument);
+            lastDisplay.innerHTML = currentDisplay.innerHTML;
             operate(firstArgument,operator.innerHTML,secondArgument);
             break;
         //Delete & Clear
