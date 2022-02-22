@@ -60,25 +60,25 @@ function buttonHandler(e){
         case 'add':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' + ';
-            operator = '+';
+            operator = document.querySelector('#add');
             operatorDisplay();
             break;
         case 'minus':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' - ';
-            operator = '-';
+            operator = document.querySelector('#minus');
             operatorDisplay();
             break;
         case 'multiply':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' * ';
-            operator = '*';
+            operator = document.querySelector('#multiply');
             operatorDisplay();
             break;
         case 'divide':
             firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' / ';
-            operator = '/';
+            operator = document.querySelector('#divide');
             operatorDisplay();
             break;
         case 'point':
@@ -88,7 +88,7 @@ function buttonHandler(e){
             console.log(firstArgument);
             secondArgument = parseInt(currentDisplay.innerHTML.slice(regexOperators));
             console.log(secondArgument);
-            operate(firstArgument,operator,secondArgument);
+            operate(firstArgument,operator.innerHTML,secondArgument);
             break;
         //Delete & Clear
         case 'clr':
@@ -136,8 +136,8 @@ function divide(a,b){
     }
     return a/b; //Implement test for divide by 0
 }
-function operate(arg1, operator, arg2){
-    switch(operator){
+function operate(arg1, oper, arg2){
+    switch(oper){
         case '+':
             currentDisplay.innerHTML = add(arg1,arg2).toString();
             break;
@@ -151,6 +151,6 @@ function operate(arg1, operator, arg2){
             currentDisplay.innerHTML = divide(arg1, arg2);
             break;
         default:
-            console.log(`Invalid operator ${operator}`);
+            console.log(`Invalid operator ${oper}`);
     }
 }
