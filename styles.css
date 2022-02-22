@@ -28,6 +28,7 @@ button{
 .screen-last{
     height: 20px;
     background-color: rgb(214, 214, 214);
+    text-align: right;
 }
 .screen-current{
     background-color: rgb(167, 166, 166);
