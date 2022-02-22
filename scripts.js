@@ -84,6 +84,7 @@ function buttonHandler(e){
             break;
         case 'equal':
             console.log(firstArgument);
+            operate(firstArgument,operator,secondArgument);
             break;
         //Delete & Clear
         case 'clr':
@@ -125,21 +126,25 @@ function multiply(a,b){
     return a*b;
 }
 function divide(a,b){
+    if(a == 0){
+        console.log('Cannot divide by 0!');
+        return('Error');
+    }
     return a/b; //Implement test for divide by 0
 }
 function operate(arg1, operator, arg2){
     switch(operator){
         case '+':
-            add(arg1,arg2);
+            currentDisplay.innerHTML = add(arg1,arg2);
             break;
         case '-':
-            subtract(arg1, arg2);
+            currentDisplay.innerHTML = subtract(arg1, arg2);
             break;
         case '*':
-            multiply(arg1, arg2);
+            currentDisplay.innerHTML = multiply(arg1, arg2);
             break;
         case '/':
-            divide(arg1, arg2);
+            currentDisplay.innerHTML = divide(arg1, arg2);
             break;
         default:
             console.log(`Invalid operator ${operator}`);
