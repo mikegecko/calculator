@@ -13,16 +13,7 @@ let lastOperator;
 buttons.forEach(element => {
     element.addEventListener('click', buttonHandler);
 });
-/*Make a function that handles the leading 0 on the display by using a handler whenever the display is updated
-    - maybe also make this function responsible for updating both displays?*/
-function displayUpdate(){
-    let s1 = currentDisplay.innerHTML;
-    if(s1.charAt(0) === '0'){
-        let s2 = s1.substring(1);
-        currentDisplay.innerHTML = s2;
-    }
-    return;
-}
+
 function buttonHandler(e){
     displayUpdate();
     //console.log(e);
@@ -59,25 +50,21 @@ function buttonHandler(e){
             break;
         //Operation and decimal handling TODO[Highlight current operation / lockout decimal if already pressed]
         case 'add':
-            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' + ';
             operator = document.querySelector('#add');
             operatorDisplay();
             break;
         case 'minus':
-            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' - ';
             operator = document.querySelector('#minus');
             operatorDisplay();
             break;
         case 'multiply':
-            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' * ';
             operator = document.querySelector('#multiply');
             operatorDisplay();
             break;
         case 'divide':
-            firstArgument = parseInt(currentDisplay.innerHTML);
             currentDisplay.innerHTML += ' / ';
             operator = document.querySelector('#divide');
             operatorDisplay();
@@ -87,9 +74,9 @@ function buttonHandler(e){
             break;
         case 'equal':
             argumentArray = currentDisplay.innerHTML.split(' ');
-            firstArgument = parseInt(argumentArray[0]);
+            firstArgument = parseFloat(argumentArray[0]);
             //operator is argumentArray[1]
-            secondArgument = parseInt(argumentArray[2]);
+            secondArgument = parseFloat(argumentArray[2]);
             console.log(firstArgument);
             console.log(secondArgument);
             lastDisplay.innerHTML = currentDisplay.innerHTML;
@@ -110,12 +97,27 @@ function buttonHandler(e){
 function clearDisplay(){
     return('0');
 }
-function operatorDisplay(){
-    buttons.forEach(element => {
-        element.style.backgroundColor = 'white';
-    });
-    operator.style.backgroundColor = 'rgb(167, 166, 166)';
-    
+//Gets rid of annoying leading 0
+function displayUpdate(){
+    let s1 = currentDisplay.innerHTML;
+    if(s1.charAt(0) === '0'){
+        let s2 = s1.substring(1);
+        currentDisplay.innerHTML = s2;
+    }
+    return;
+}
+function operatorDisplay(arg1){
+    if(arg1 == true){
+        buttons.forEach(element => {
+            element.style.backgroundColor = 'white';
+        });
+    }
+    else{
+        buttons.forEach(element => {
+            element.style.backgroundColor = 'white';
+        });
+        operator.style.backgroundColor = 'rgb(167, 166, 166)';
+    }
 }
 function del(){
     let dispArr = currentDisplay.innerHTML.split('');
