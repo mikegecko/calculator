@@ -13,7 +13,7 @@ let lastOperator;
 buttons.forEach(element => {
     element.addEventListener('click', buttonHandler);
 });
-
+/*TODO: Operator lockout and decimal lockout - make calculator & buttons more stylish */
 function buttonHandler(e){
     displayUpdate();
     //console.log(e);
