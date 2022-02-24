@@ -1,12 +1,14 @@
 const currentDisplay = document.querySelector('.screen-current');
 const lastDisplay = document.querySelector('.screen-last');
 const buttons = document.querySelectorAll('.btn');
+const pointButton = document.querySelector('#point');
 const regexOperators = /\+-\*\//i;
 
 let firstArgument = 0;
 let secondArgument;
 let argumentArray = [];
 let opSelect = false;
+let pointLock = false;
 let operator;
 let lastOperator;
 
@@ -55,7 +57,6 @@ function buttonHandler(e){
             if(opSelect == true){
                 currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
             }
-            opSelect = true;
             currentDisplay.innerHTML += ' + ';
             operator = document.querySelector('#add');
             operatorDisplay();
@@ -64,7 +65,6 @@ function buttonHandler(e){
             if(opSelect == true){
                 currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
             }
-            opSelect = true;
             currentDisplay.innerHTML += ' - ';
             operator = document.querySelector('#minus');
             operatorDisplay();
@@ -73,7 +73,6 @@ function buttonHandler(e){
             if(opSelect == true){
                 currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
             }
-            opSelect = true;
             currentDisplay.innerHTML += ' * ';
             operator = document.querySelector('#multiply');
             operatorDisplay();
@@ -82,13 +81,16 @@ function buttonHandler(e){
             if(opSelect == true){
                 currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
             }
-            opSelect = true;
             currentDisplay.innerHTML += ' / ';
             operator = document.querySelector('#divide');
             operatorDisplay();
             break;
         case 'point':
-            currentDisplay.innerHTML += '.';
+            if(!pointLock){
+                currentDisplay.innerHTML += '.';
+                pointLock = true;
+            }
+            pointDisplay();
             break;
         case 'equal':
             operate();
@@ -109,6 +111,10 @@ function clearDisplay(){
     firstArgument = 0;
     currentDisplay.innerHTML = '0';
     opSelect = false;
+    pointLock = false;
+    buttons.forEach(element => {
+        element.style.backgroundColor = 'rgb(239, 239, 239)';
+    });
     return;
 }
 //Gets rid of annoying leading 0
@@ -121,7 +127,7 @@ function displayUpdate(e){
         if(s1.charAt(1) === ' '){
             return;
         }
-        if(s1.charAt(1) == '.'){
+        if(s1.charAt(1) === '.'){
             return;
         }
         let s2 = s1.substring(1);
@@ -129,19 +135,21 @@ function displayUpdate(e){
     }
     return;
 }
-
-function operatorDisplay(firstArgument){
-    if(firstArgument == true){
-        buttons.forEach(element => {
-            element.style.backgroundColor = 'rgb(239, 239, 239)';
-        });
+function pointDisplay(){
+    if(pointLock){
+        pointButton.style.backgroundColor = 'rgb(167, 166, 166)';
     }
-    else{
-        buttons.forEach(element => {
-            element.style.backgroundColor = 'rgb(239, 239, 239)';
-        });
-        operator.style.backgroundColor = 'rgb(167, 166, 166)';
+}
+function operatorDisplay(){
+    opSelect = true;
+    buttons.forEach(element => {
+        element.style.backgroundColor = 'rgb(239, 239, 239)';
+    });
+    operator.style.backgroundColor = 'rgb(167, 166, 166)';
+    if(pointLock){
+        pointButton.style.backgroundColor = 'rgb(167, 166, 166)';
     }
+    return;
 }
 function del(){
     let dispArr = currentDisplay.innerHTML.split('');

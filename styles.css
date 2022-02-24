@@ -24,6 +24,7 @@ button{
     justify-self: center;
     text-align: center;
     border: none;
+    border-radius: 4px;
 }
 button:hover{
     outline: rgb(20, 20, 20) solid 4px;
