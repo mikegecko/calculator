@@ -110,7 +110,7 @@ function clearDisplay(){
     currentDisplay.innerHTML = '0';
     return;
 }
-//Gets rid of annoying leading 0 - this is breaking something
+//Gets rid of annoying leading 0
 function displayUpdate(e){
     let s1 = currentDisplay.innerHTML;
     if(e.target.id == 'clr' || e.target.id == 'del'){
@@ -138,7 +138,16 @@ function operatorDisplay(firstArgument){
 }
 function del(){
     let dispArr = currentDisplay.innerHTML.split('');
-    dispArr.pop();
+    if(dispArr[dispArr.length - 1] == ' '){
+        for (let index = 0; index < 3; index++) {
+            dispArr.pop();
+        }
+        opSelect = false;
+    }
+    else{
+        dispArr.pop();
+    }
+    
     if(currentDisplay.innerHTML == '' || dispArr.length == 0){
         return('0');
     }
