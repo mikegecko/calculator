@@ -23,7 +23,7 @@ button{
     height: 80px;
     justify-self: center;
     text-align: center;
-    
+    box-shadow: none;
 }
 .screen-last{
     height: 20px;

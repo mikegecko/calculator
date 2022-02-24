@@ -6,6 +6,7 @@ const regexOperators = /\+-\*\//i;
 let firstArgument = 0;
 let secondArgument;
 let argumentArray = [];
+let opSelect = false;
 let operator;
 let lastOperator;
 
@@ -50,21 +51,37 @@ function buttonHandler(e){
             break;
         //Operation and decimal handling TODO[Highlight current operation / lockout decimal if already pressed]
         case 'add':
+            if(opSelect == true){
+                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+            }
+            opSelect = true;
             currentDisplay.innerHTML += ' + ';
             operator = document.querySelector('#add');
             operatorDisplay();
             break;
         case 'minus':
+            if(opSelect == true){
+                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+            }
+            opSelect = true;
             currentDisplay.innerHTML += ' - ';
             operator = document.querySelector('#minus');
             operatorDisplay();
             break;
         case 'multiply':
+            if(opSelect == true){
+                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+            }
+            opSelect = true;
             currentDisplay.innerHTML += ' * ';
             operator = document.querySelector('#multiply');
             operatorDisplay();
             break;
         case 'divide':
+            if(opSelect == true){
+                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+            }
+            opSelect = true;
             currentDisplay.innerHTML += ' / ';
             operator = document.querySelector('#divide');
             operatorDisplay();
@@ -115,6 +132,7 @@ function displayUpdate(e){
     }
     return;
 }
+
 function operatorDisplay(arg1){
     if(arg1 == true){
         buttons.forEach(element => {
