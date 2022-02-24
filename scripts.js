@@ -90,24 +90,13 @@ function buttonHandler(e){
             currentDisplay.innerHTML += '.';
             break;
         case 'equal':
-            argumentArray = currentDisplay.innerHTML.split(' ');
-            try{
-                firstArgument = parseFloat(argumentArray[0]);
-                //operator is argumentArray[1]
-                secondArgument = parseFloat(argumentArray[2]);
-                console.log(firstArgument);
-                console.log(secondArgument);
-                lastDisplay.innerHTML = currentDisplay.innerHTML;
-                operate(firstArgument,operator.innerHTML,secondArgument);
-            }
-            catch(error){
-                console.log(error);
-            }
+            operate();
             break;
         //Delete & Clear
         case 'clr':
             firstArgument = 0;
-            currentDisplay.innerHTML = clearDisplay();
+            opSelect = false;
+            clearDisplay();
             break;
         case 'del':
             currentDisplay.innerHTML = del();
@@ -118,7 +107,8 @@ function buttonHandler(e){
     displayUpdate(e);
 }
 function clearDisplay(){
-    return('0');
+    currentDisplay.innerHTML = '0';
+    return;
 }
 //Gets rid of annoying leading 0 - this is breaking something
 function displayUpdate(e){
@@ -133,8 +123,8 @@ function displayUpdate(e){
     return;
 }
 
-function operatorDisplay(arg1){
-    if(arg1 == true){
+function operatorDisplay(firstArgument){
+    if(firstArgument == true){
         buttons.forEach(element => {
             element.style.backgroundColor = 'rgb(239, 239, 239)';
         });
@@ -170,19 +160,34 @@ function divide(a,b){
     }
     return a/b; //Implement test for divide by 0
 }
-function operate(arg1, oper, arg2){
+function operate(){
+    let oper = operator.innerHTML;
+    argumentArray = currentDisplay.innerHTML.split(' ');
+
+    try{
+        firstArgument = parseFloat(argumentArray[0]);
+        //operator is argumentArray[1]
+        secondArgument = parseFloat(argumentArray[2]);
+        console.log(firstArgument);
+        console.log(secondArgument);
+        lastDisplay.innerHTML = currentDisplay.innerHTML;
+    }
+    catch(error){
+        console.log(error);
+    }
+
     switch(oper){
         case '+':
-            currentDisplay.innerHTML = add(arg1,arg2).toString();
+            currentDisplay.innerHTML = add(firstArgument,secondArgument).toString();
             break;
         case '-':
-            currentDisplay.innerHTML = subtract(arg1, arg2);
+            currentDisplay.innerHTML = subtract(firstArgument, secondArgument);
             break;
         case '*':
-            currentDisplay.innerHTML = multiply(arg1, arg2);
+            currentDisplay.innerHTML = multiply(firstArgument, secondArgument);
             break;
         case '/':
-            currentDisplay.innerHTML = divide(arg1, arg2);
+            currentDisplay.innerHTML = divide(firstArgument, secondArgument);
             break;
         default:
             console.log(`Invalid operator ${oper}`);
