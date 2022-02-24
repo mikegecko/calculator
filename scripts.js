@@ -78,14 +78,14 @@ function buttonHandler(e){
                 firstArgument = parseFloat(argumentArray[0]);
                 //operator is argumentArray[1]
                 secondArgument = parseFloat(argumentArray[2]);
+                console.log(firstArgument);
+                console.log(secondArgument);
+                lastDisplay.innerHTML = currentDisplay.innerHTML;
+                operate(firstArgument,operator.innerHTML,secondArgument);
             }
             catch(error){
                 console.log(error);
             }
-            console.log(firstArgument);
-            console.log(secondArgument);
-            lastDisplay.innerHTML = currentDisplay.innerHTML;
-            operate(firstArgument,operator.innerHTML,secondArgument);
             break;
         //Delete & Clear
         case 'clr':
