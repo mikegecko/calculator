@@ -49,7 +49,8 @@ function buttonHandler(e){
         case '0':
             currentDisplay.innerHTML += '0';
             break;
-        //Operation and decimal handling TODO[Highlight current operation / lockout decimal if already pressed]
+        //Operation handling
+        //TODO[lockout decimal if already pressed, if operator is pressed after second argument is entered then solve, fix display bugs with equal then switching operators]
         case 'add':
             if(opSelect == true){
                 currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
@@ -167,7 +168,7 @@ function divide(a,b){
         console.log('Cannot divide by 0!');
         return('Error');
     }
-    return a/b; //Implement test for divide by 0
+    return a/b;
 }
 function operate(){
     let oper = operator.innerHTML;
