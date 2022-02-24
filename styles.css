@@ -23,7 +23,10 @@ button{
     height: 80px;
     justify-self: center;
     text-align: center;
-    box-shadow: none;
+    border: none;
+}
+button:hover{
+    outline: rgb(20, 20, 20) solid 4px;
 }
 .screen-last{
     height: 20px;
