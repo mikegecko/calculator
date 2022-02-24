@@ -147,7 +147,8 @@ function operatorDisplay(){
     });
     operator.style.backgroundColor = 'rgb(167, 166, 166)';
     if(pointLock){
-        pointButton.style.backgroundColor = 'rgb(167, 166, 166)';
+        //pointButton.style.backgroundColor = 'rgb(167, 166, 166)';
+        pointLock = false;
     }
     return;
 }
