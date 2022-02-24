@@ -94,6 +94,9 @@ function buttonHandler(e){
             break;
         case 'equal':
             operate();
+            pointLock = false;
+            opSelect = false;
+            pointDisplay();
             break;
         //Delete & Clear
         case 'clr':
