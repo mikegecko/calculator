@@ -15,7 +15,7 @@ buttons.forEach(element => {
 });
 /*TODO: Operator lockout and decimal lockout - make calculator & buttons more stylish */
 function buttonHandler(e){
-    //displayUpdate(); fix this function later
+    
     //console.log(e);
     switch(e.target.id){
         case '9':
@@ -74,9 +74,14 @@ function buttonHandler(e){
             break;
         case 'equal':
             argumentArray = currentDisplay.innerHTML.split(' ');
-            firstArgument = parseFloat(argumentArray[0]);
-            //operator is argumentArray[1]
-            secondArgument = parseFloat(argumentArray[2]);
+            try{
+                firstArgument = parseFloat(argumentArray[0]);
+                //operator is argumentArray[1]
+                secondArgument = parseFloat(argumentArray[2]);
+            }
+            catch(error){
+                console.log(error);
+            }
             console.log(firstArgument);
             console.log(secondArgument);
             lastDisplay.innerHTML = currentDisplay.innerHTML;
@@ -93,17 +98,18 @@ function buttonHandler(e){
         default:
             console.log(`Handler error for ${e}`);
     }
-    
+    displayUpdate(e);
 }
 function clearDisplay(){
     return('0');
 }
 //Gets rid of annoying leading 0 - this is breaking something
-function displayUpdate(){
+function displayUpdate(e){
     let s1 = currentDisplay.innerHTML;
-    console.log(s1);
+    if(e.target.id == 'clr' || e.target.id == 'del'){
+        return;
+    }
     if(s1.charAt(0) === '0' && s1.charAt(1) !== '.'){
-        console.log(s1.charAt(1));
         let s2 = s1.substring(1);
         currentDisplay.innerHTML = s2;
     }
