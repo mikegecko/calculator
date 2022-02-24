@@ -95,8 +95,6 @@ function buttonHandler(e){
             break;
         //Delete & Clear
         case 'clr':
-            firstArgument = 0;
-            opSelect = false;
             clearDisplay();
             break;
         case 'del':
@@ -108,7 +106,9 @@ function buttonHandler(e){
     displayUpdate(e);
 }
 function clearDisplay(){
+    firstArgument = 0;
     currentDisplay.innerHTML = '0';
+    opSelect = false;
     return;
 }
 //Gets rid of annoying leading 0
@@ -117,7 +117,13 @@ function displayUpdate(e){
     if(e.target.id == 'clr' || e.target.id == 'del'){
         return;
     }
-    if(s1.charAt(0) === '0' && s1.charAt(1) !== '.'){
+    if(s1.charAt(0) === '0' && s1.length > 1){
+        if(s1.charAt(1) === ' '){
+            return;
+        }
+        if(s1.charAt(1) == '.'){
+            return;
+        }
         let s2 = s1.substring(1);
         currentDisplay.innerHTML = s2;
     }
