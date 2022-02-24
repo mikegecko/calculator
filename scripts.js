@@ -15,7 +15,7 @@ buttons.forEach(element => {
 });
 /*TODO: Operator lockout and decimal lockout - make calculator & buttons more stylish */
 function buttonHandler(e){
-    displayUpdate();
+    //displayUpdate(); fix this function later
     //console.log(e);
     switch(e.target.id){
         case '9':
@@ -70,7 +70,7 @@ function buttonHandler(e){
             operatorDisplay();
             break;
         case 'point':
-            currentDisplay.innerHTML += ' . ';
+            currentDisplay.innerHTML += '.';
             break;
         case 'equal':
             argumentArray = currentDisplay.innerHTML.split(' ');
@@ -93,14 +93,17 @@ function buttonHandler(e){
         default:
             console.log(`Handler error for ${e}`);
     }
+    
 }
 function clearDisplay(){
     return('0');
 }
-//Gets rid of annoying leading 0
+//Gets rid of annoying leading 0 - this is breaking something
 function displayUpdate(){
     let s1 = currentDisplay.innerHTML;
-    if(s1.charAt(0) === '0'){
+    console.log(s1);
+    if(s1.charAt(0) === '0' && s1.charAt(1) !== '.'){
+        console.log(s1.charAt(1));
         let s2 = s1.substring(1);
         currentDisplay.innerHTML = s2;
     }
@@ -109,12 +112,12 @@ function displayUpdate(){
 function operatorDisplay(arg1){
     if(arg1 == true){
         buttons.forEach(element => {
-            element.style.backgroundColor = 'white';
+            element.style.backgroundColor = 'rgb(239, 239, 239)';
         });
     }
     else{
         buttons.forEach(element => {
-            element.style.backgroundColor = 'white';
+            element.style.backgroundColor = 'rgb(239, 239, 239)';
         });
         operator.style.backgroundColor = 'rgb(167, 166, 166)';
     }
@@ -137,7 +140,7 @@ function multiply(a,b){
     return a*b;
 }
 function divide(a,b){
-    if(a == 0){
+    if(a === 0){
         console.log('Cannot divide by 0!');
         return('Error');
     }
