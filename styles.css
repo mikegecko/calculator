@@ -25,9 +25,13 @@ button{
     text-align: center;
     border: none;
     border-radius: 4px;
+    background-color: rgb(239, 239, 239);
 }
 button:hover{
     outline: rgb(20, 20, 20) solid 4px;
+}
+button:active{
+    background-color: rgb(197, 197, 204) !important;
 }
 .screen-last{
     height: 20px;
