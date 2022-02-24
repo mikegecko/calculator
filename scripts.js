@@ -16,7 +16,7 @@ let lastOperator;
 buttons.forEach(element => {
     element.addEventListener('click', buttonHandler);
 });
-/*TODO: Operator lockout and decimal lockout - make calculator & buttons more stylish */
+/*Make calculator & buttons more stylish | Also if rewritting project use an array to hold values and just modify as its updated*/
 function buttonHandler(e){
     
     //console.log(e);
@@ -52,7 +52,7 @@ function buttonHandler(e){
             currentDisplay.innerHTML += '0';
             break;
         //Operation handling
-        //TODO[lockout decimal if already pressed, if operator is pressed after second argument is entered then solve, fix display bugs with equal then switching operators]
+        //TODO[Fix edge cases by checking deletion and if operator is pressed after second argument is entered then solve, fix display bugs with equal then switching operators]
         case 'add':
             if(opSelect == true){
                 currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
@@ -110,6 +110,7 @@ function buttonHandler(e){
     }
     displayUpdate(e);
 }
+
 function clearDisplay(){
     firstArgument = 0;
     currentDisplay.innerHTML = '0';
@@ -138,11 +139,13 @@ function displayUpdate(e){
     }
     return;
 }
+
 function pointDisplay(){
     if(pointLock){
         pointButton.style.backgroundColor = 'rgb(167, 166, 166)';
     }
 }
+
 function operatorDisplay(){
     opSelect = true;
     buttons.forEach(element => {
@@ -155,6 +158,7 @@ function operatorDisplay(){
     }
     return;
 }
+
 function del(){
     let dispArr = currentDisplay.innerHTML.split('');
     if(dispArr[dispArr.length - 1] == ' '){
@@ -172,15 +176,19 @@ function del(){
     }
     return dispArr.join('');
 }
+
 function add(a,b){
     return a+b;
 }
+
 function subtract(a,b){
     return a-b;
 }
+
 function multiply(a,b){
     return a*b;
 }
+
 function divide(a,b){
     if(a === 0){
         console.log('Cannot divide by 0!');
@@ -188,6 +196,7 @@ function divide(a,b){
     }
     return a/b;
 }
+
 function operate(){
     let oper = operator.innerHTML;
     argumentArray = currentDisplay.innerHTML.split(' ');
