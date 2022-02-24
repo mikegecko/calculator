@@ -2,7 +2,7 @@ const currentDisplay = document.querySelector('.screen-current');
 const lastDisplay = document.querySelector('.screen-last');
 const buttons = document.querySelectorAll('.btn');
 const pointButton = document.querySelector('#point');
-const regexOperators = /\+-\*\//i;
+const regexOperators = /\+-\*\//i; //Not used
 
 let firstArgument = 0;
 let secondArgument;
@@ -55,7 +55,12 @@ function buttonHandler(e){
         //TODO[Fix edge cases by checking deletion and if operator is pressed after second argument is entered then solve, fix display bugs with equal then switching operators]
         case 'add':
             if(opSelect == true){
-                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                if(currentDisplay.innerHTML.charAt(currentDisplay.innerHTML.length) != ' '){
+                    operate();
+                }
+                else{
+                    currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                }
             }
             currentDisplay.innerHTML += ' + ';
             operator = document.querySelector('#add');
@@ -63,7 +68,12 @@ function buttonHandler(e){
             break;
         case 'minus':
             if(opSelect == true){
-                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                if(currentDisplay.innerHTML.charAt(currentDisplay.innerHTML.length) != ' '){
+                    operate();
+                }
+                else{
+                    currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                }
             }
             currentDisplay.innerHTML += ' - ';
             operator = document.querySelector('#minus');
@@ -71,7 +81,12 @@ function buttonHandler(e){
             break;
         case 'multiply':
             if(opSelect == true){
-                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                if(currentDisplay.innerHTML.charAt(currentDisplay.innerHTML.length) != ' '){
+                    operate();
+                }
+                else{
+                    currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                }
             }
             currentDisplay.innerHTML += ' * ';
             operator = document.querySelector('#multiply');
@@ -79,7 +94,12 @@ function buttonHandler(e){
             break;
         case 'divide':
             if(opSelect == true){
-                currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                if(currentDisplay.innerHTML.charAt(currentDisplay.innerHTML.length) != ' '){
+                    operate();
+                }
+                else{
+                    currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, currentDisplay.innerHTML.length - 3);
+                }
             }
             currentDisplay.innerHTML += ' / ';
             operator = document.querySelector('#divide');
